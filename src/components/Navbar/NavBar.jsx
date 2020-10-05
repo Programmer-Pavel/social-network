@@ -1,8 +1,10 @@
 import React from 'react';
 import s from "./NavBar.module.css";
 import {NavLink} from "react-router-dom";
+import Sidebar from "./sidebar/Sidebar";
 
-const NavBar = () => {
+const NavBar = (props) => {
+    let sidebarElements = props.state.sidebar.map(s => <Sidebar name={s.name} id={s.name} img={s.img}/>)
     return <nav className={s.nav}>
         <div className={s.item}>
             <NavLink to='/profile' activeClassName={s.activeLink}>Profile</NavLink>
@@ -18,6 +20,14 @@ const NavBar = () => {
         </div>
         <div className={s.item}>
             <NavLink to='/settings' activeClassName={s.activeLink}>Settings</NavLink>
+        </div>
+        <div>
+            <div className={s.friends}>
+                Friends
+            </div>
+            <div>
+                {sidebarElements}
+            </div>
         </div>
     </nav>
 }

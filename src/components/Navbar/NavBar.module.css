@@ -11,3 +11,7 @@
 .item a.activeLink {
     color: white;
 }
+.friends {
+    padding: 20px;
+    font-size: 30px;
+}

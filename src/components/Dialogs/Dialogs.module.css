@@ -1,7 +1,7 @@
-.dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
-}
+/*.dialogs {*/
+/*    display: grid;*/
+/*    grid-template-columns: 2fr 10fr;*/
+/*}*/
 
 .dialogsItems {
     padding: 20px;
@@ -15,7 +15,5 @@
     padding: 20px;
 }
 
-.message {
 
-}
 
