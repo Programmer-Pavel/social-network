@@ -9,19 +9,19 @@ let state = {
     },
     dialogsPage: {
         dialogs: [
-            {name: 'Victor', id: 1, img: "https://static.360tv.ru/media/article_media/7e00c45cfdb9489cad203327cb94bb0d_201708211251.jpg"},
-            {name: 'Dima', id: 2, img: "https://pbs.twimg.com/profile_images/913861131005022209/iaBdZZn1.jpg"},
-            {name: 'Victoria', id: 3, img: "https://klike.net/uploads/posts/2019-03/1551511784_4.jpg"},
-            {name: 'Alina', id: 4, img: "https://moi-tvoi.ru/upload/iblock/photos215/product_214674_0.jpg"},
-            {name: 'Leha', id: 5,img: "https://i03.fotocdn.net/s119/11a097ff366bfb24/user_l/2713047325.jpg"}
+            {name: 'Victor', id: 1, img: "https://static.360tv.ru/media/article_media/7e00c45cfdb9489cad203327cb94bb0d_201708211251.jpg", message: 'Hi'},
+            {name: 'Dima', id: 2, img: "https://pbs.twimg.com/profile_images/913861131005022209/iaBdZZn1.jpg", message: 'How are you?'},
+            {name: 'Victoria', id: 3, img: "https://klike.net/uploads/posts/2019-03/1551511784_4.jpg", message: 'Yo'},
+            {name: 'Alina', id: 4, img: "https://moi-tvoi.ru/upload/iblock/photos215/product_214674_0.jpg", message: 'Yo'},
+            {name: 'Leha', id: 5,img: "https://i03.fotocdn.net/s119/11a097ff366bfb24/user_l/2713047325.jpg", message: 'Yo'}
         ],
-        messages: [
-            {message: 'Hi'},
-            {message: 'How are you?'},
-            {message: 'Yo'},
-            {message: 'Yo'},
-            {message: 'Yo'}
-        ]
+        // messages: [
+        //     {message: 'Hi'},
+        //     {message: 'How are you?'},
+        //     {message: 'Yo'},
+        //     {message: 'Yo'},
+        //     {message: 'Yo'}
+        // ]
     },
     sidebars: {
         sidebar: [
@@ -32,5 +32,14 @@ let state = {
     }
 
 }
+
+export let addPost = (NewPostElement) => {
+    let post = {
+        message: NewPostElement,
+        count: 0
+    }
+    state.postPage.posts.push(post)
+}
+
 
 export default state;
