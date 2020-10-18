@@ -2,17 +2,21 @@ import React from 'react';
 import s from "./Dialogs.module.css";
 
 import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
+// import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} img={d.img} message={d.message}/>)
+    let dialogsElements = props.dialogPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} img={d.img} message={d.message}/>)
     // let messagesElements = props.state.messages.map(m => <Message message={m.message}/>)
 
     let newMessage = React.createRef()
 
-    let addMessage = () => {
+    let addMessageElement = () => {
+        props.addMessage();
+    }
+
+    let onMessageChange = () => {
         let message = newMessage.current.value
-        alert(message)
+        props.updateNewMessage(message);
     }
 
 
@@ -25,8 +29,8 @@ const Dialogs = (props) => {
                 {/*{messagesElements}*/}
             </div>
             <div>
-                <textarea ref={newMessage} cols="30" rows="5"></textarea>
-                <button onClick={addMessage}>add Message</button>
+                <textarea onChange={onMessageChange} value={props.newMessageText} ref={newMessage} cols="30" rows="5"></textarea>
+                <button onClick={addMessageElement}>add Message</button>
             </div>
         </div>
     )

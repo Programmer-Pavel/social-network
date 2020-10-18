@@ -12,17 +12,22 @@ import Music from "./components/Music/Music";
 const App = (props) => {
 
     return (
-            <div className='app-wrapper'>
-                <Header/>
-                <NavBar state={props.state.sidebars}/>
-                <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
-                    <Route path='/profile' render={() => <Profile state={props.state.postPage} addPost={props.addPost}/>}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/Settings' component={Settings}/>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <NavBar state={props.state.sidebars}/>
+            <div className='app-wrapper-content'>
+                <Route path='/dialogs' render={() => <Dialogs dialogPage={props.state.dialogsPage}
+                                                              updateNewMessage={props.updateNewMessage}
+                                                              addMessage={props.addMessage}/>}/>
+
+                <Route path='/profile' render={() => <Profile postPage={props.state.postPage}
+                                                              updateNewPostText={props.updateNewPostText}
+                                                              addPost={props.addPost}/>}/>
+                <Route path='/news' component={News}/>
+                <Route path='/music' component={Music}/>
+                <Route path='/Settings' component={Settings}/>
             </div>
+        </div>
     )
 }
 
