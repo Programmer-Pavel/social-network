@@ -1,3 +1,8 @@
+const ADD_POST  = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT  = 'UPDATE-NEW-POST-TEXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+
 let store = {
     _callSubscriber() {
         console.log('anyway');
@@ -113,7 +118,7 @@ let store = {
     // },
 
     dispatch(action) {
-        if (action.type ==='ADD-POST') {
+        if (action.type === ADD_POST) {
             let post = {
                 message: this._state.postPage.newPostText,
                 count: 0
@@ -122,11 +127,11 @@ let store = {
             this._state.postPage.newPostText = '';
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.postPage.newPostText = action.newText;
             this._callSubscriber(this._state);
 
-        } else if (action.type === 'ADD-MESSAGE') {
+        } else if (action.type === ADD_MESSAGE) {
             let message = {
                 name: 'Alina',
                 id: 4,
@@ -137,11 +142,17 @@ let store = {
             this._state.dialogsPage.newMessageText = '';
             this._callSubscriber(this._state);
 
-        } else if(action.type === 'UPDATE-NEW-MESSAGE') {
+        } else if(action.type === UPDATE_NEW_MESSAGE) {
             this._state.dialogsPage.newMessageText = action.Text;
             this._callSubscriber(this._state);
         }
     }
 }
+
+export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
+export const UPDATE_NEW_POST_TEXT_ACTION_CREATOR = (post) => ({type: UPDATE_NEW_POST_TEXT, newText: post});
+
+export const ADD_MESSAGE_ACTION_CREATOR = () => ({type:ADD_MESSAGE});
+export const UPDATE_NEW_MESSAGE_ACTION_CREATOR = (message) => ({type: UPDATE_NEW_MESSAGE, Text: message});
 
 export default store;
