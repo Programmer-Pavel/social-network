@@ -2,11 +2,9 @@ import React from 'react';
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {
-    ADD_POST,
     ADD_POST_ACTION_CREATOR,
-    UPDATE_NEW_POST_TEXT,
     UPDATE_NEW_POST_TEXT_ACTION_CREATOR
-} from "../../redux/state";
+} from "../../redux/post-page-reducer";
 
 const MyPosts = (props) => {
 

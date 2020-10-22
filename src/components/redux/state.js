@@ -1,7 +1,6 @@
-const ADD_POST  = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT  = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE = 'UPDATE-NEW-MESSAGE';
+import postReducer from "./post-page-reducer";
+import sidebarReducer from "./sidebar-reducer";
+import dialogsReducer from "./dialogs-page-reducer";
 
 let store = {
     _callSubscriber() {
@@ -10,7 +9,7 @@ let store = {
 
     _state: {
         postPage: {
-            newPostText: 'iam',
+            newPostText: '',
             posts: [
                 {message: 'Hi, it\'s my first post', count: 15},
                 {message: 'How are you?', count: 10}
@@ -49,14 +48,14 @@ let store = {
                     message: 'Yo'
                 },
             ],
-            newMessageText: 'rhh'
-            // messages: [
-            //     {message: 'Hi'},
-            //     {message: 'How are you?'},
-            //     {message: 'Yo'},
-            //     {message: 'Yo'},
-            //     {message: 'Yo'}
-            // ]
+            newMessageText: '',
+            messages: [
+                {id: 1, message: 'Hi'},
+                {id: 2, message: 'How are you?'},
+                {id: 3, message: 'Yo'},
+                {id: 4, message: 'Yo'},
+                {id: 5, message: 'Yo'}
+            ]
         },
         sidebars: {
             sidebar: [
@@ -87,72 +86,14 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    // addPost() {
-    //     let post = {
-    //         message: this._state.postPage.newPostText,
-    //         count: 0
-    //     }
-    //     this._state.postPage.posts.push(post);
-    //     this._state.postPage.newPostText = '';
-    //     this._callSubscriber(this._state);
-    // },
-    // updateNewPostText(newText) {
-    //     this._state.postPage.newPostText = newText;
-    //     this._callSubscriber(this._state);
-    // },
-    //
-    // addMessage() {
-    //     let message = {
-    //         name: 'Alina',
-    //         id: 4,
-    //         img: "https://moi-tvoi.ru/upload/iblock/photos215/product_214674_0.jpg",
-    //         message: this._state.dialogsPage.newMessageText
-    //     }
-    //     this._state.dialogsPage.dialogs.push(message);
-    //     this._state.dialogsPage.newMessageText = '';
-    //     this._callSubscriber(this._state);
-    // },
-    // updateNewMessage(Text) {
-    //     this._state.dialogsPage.newMessageText = Text;
-    //     this._callSubscriber(this._state);
-    // },
-
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let post = {
-                message: this._state.postPage.newPostText,
-                count: 0
-            }
-            this._state.postPage.posts.push(post);
-            this._state.postPage.newPostText = '';
-            this._callSubscriber(this._state);
 
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.postPage.newPostText = action.newText;
-            this._callSubscriber(this._state);
+        postReducer(this._state.postPage, action);
+        dialogsReducer(this._state.dialogsPage, action);
+        sidebarReducer(this._state.sidebars, action);
 
-        } else if (action.type === ADD_MESSAGE) {
-            let message = {
-                name: 'Alina',
-                id: 4,
-                img: "https://moi-tvoi.ru/upload/iblock/photos215/product_214674_0.jpg",
-                message: this._state.dialogsPage.newMessageText
-            }
-            this._state.dialogsPage.dialogs.push(message);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber(this._state);
-
-        } else if(action.type === UPDATE_NEW_MESSAGE) {
-            this._state.dialogsPage.newMessageText = action.Text;
-            this._callSubscriber(this._state);
-        }
+        this._callSubscriber(this._state);
     }
 }
-
-export const ADD_POST_ACTION_CREATOR = () => ({type: ADD_POST});
-export const UPDATE_NEW_POST_TEXT_ACTION_CREATOR = (post) => ({type: UPDATE_NEW_POST_TEXT, newText: post});
-
-export const ADD_MESSAGE_ACTION_CREATOR = () => ({type:ADD_MESSAGE});
-export const UPDATE_NEW_MESSAGE_ACTION_CREATOR = (message) => ({type: UPDATE_NEW_MESSAGE, Text: message});
 
 export default store;
