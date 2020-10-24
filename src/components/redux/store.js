@@ -88,9 +88,9 @@ let store = {
 
     dispatch(action) {
 
-        postReducer(this._state.postPage, action);
-        dialogsReducer(this._state.dialogsPage, action);
-        sidebarReducer(this._state.sidebars, action);
+        this._state.postPage = postReducer(this._state.postPage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebars = sidebarReducer(this._state.sidebars, action);
 
         this._callSubscriber(this._state);
     }
