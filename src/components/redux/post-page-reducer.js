@@ -2,11 +2,11 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
-    newPostText: '',
-    posts: [
-        {message: 'Hi, it\'s my first post', count: 15},
-        {message: 'How are you?', count: 10}
-    ]
+        newPostText: '',
+        posts: [
+            {message: 'Hi, it\'s my first post', count: 15},
+            {message: 'How are you?', count: 10}
+        ]
 };
 
 const postReducer = (state = initialState, action) => {
