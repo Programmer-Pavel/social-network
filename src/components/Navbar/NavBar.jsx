@@ -5,7 +5,7 @@ import Sidebar from "./sidebar/Sidebar";
 
 const NavBar = (props) => {
 
-    let sidebarElements = props.sidebars.sidebar.map(s => <Sidebar name={s.name} id={s.name} img={s.img}/>)
+    let sidebarElements = props.sidebars.sidebar.map(s => <Sidebar name={s.name} id={s.name} key={s.id} img={s.img}/>)
     return <nav className={s.nav}>
         <div className={s.item}>
             <NavLink to='/profile' activeClassName={s.activeLink}>Profile</NavLink>
