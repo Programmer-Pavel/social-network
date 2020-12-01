@@ -26,7 +26,7 @@ const Users = (props) => {
                     </div>
                     <div>
                         {u.followed ? <button onClick={() => {
-                            props.collow(u.id)
+                            props.follow(u.id)
                         }}>follow</button> : <button onClick={() => {
                             props.unfollow(u.id)
                         }}>unfollow</button>}

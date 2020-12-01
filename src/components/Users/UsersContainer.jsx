@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-    followAC,
-    setCurrentPageAC,
-    toggleIsFetchingAC,
-    setUsersAC,
-    setUsersTotalCountAC,
-    unfollowAC
+    follow,
+    setCurrentPage,
+    toggleIsFetching,
+    setUsers,
+    setTotalUsersCount,
+    unfollow
 } from '../redux/users-page-reducer';
 import {connect} from 'react-redux';
 import Users from './Users';
@@ -41,7 +41,7 @@ class UsersContainer extends React.Component {
                       pageSize = {this.props.pageSize}
                       currentPage = {this.props.currentPage}
                       onPageChanged = {this.onPageChanged}
-                      collow = {this.props.collow}
+                      follow = {this.props.follow}
                       unfollow = {this.props.unfollow}
         />
         </>
@@ -58,29 +58,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        collow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setUsersTotalCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersContainer);
 
