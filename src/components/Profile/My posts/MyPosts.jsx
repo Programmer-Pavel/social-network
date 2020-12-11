@@ -3,8 +3,9 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+debugger
+    const postElements = props.posts.map(p => <Post message={p.message} count={p.count}/>);
 
-    let postsElements = props.postPage.posts.map(p => <Post message={p.message} count={p.count}/>)
     let newPost = React.createRef();
 
     let addPostElement = () => {
@@ -20,13 +21,13 @@ const MyPosts = (props) => {
         <div className={s.postBlock}>
             My posts
             <div>
-                <textarea onChange={onPostChange} value={props.postPage.newPostText} ref={newPost}></textarea>
+                <textarea onChange={onPostChange} value={props.newPostText} ref={newPost}></textarea>
             </div>
             <div>
                 <button onClick={addPostElement}>Add post</button>
             </div>
-            <div className={s.posts}>
-                {postsElements}
+            <div className={s.post}>
+                {postElements}
             </div>
         </div>
     )

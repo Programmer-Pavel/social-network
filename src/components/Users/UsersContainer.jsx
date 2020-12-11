@@ -9,7 +9,7 @@ import {
 } from '../redux/users-page-reducer';
 import {connect} from 'react-redux';
 import Users from './Users';
-import * as axios from 'axios';
+import axios from 'axios';
 import Preloader from "../common/Preloader/preloader";
 
 class UsersContainer extends React.Component {
@@ -33,17 +33,18 @@ class UsersContainer extends React.Component {
                 this.props.setUsers(response.data.items);
             })
     }
+
     render() {
         return <>
             {this.props.isFetching ? <Preloader/> : null}
-            <Users users = {this.props.users}
-                      totalUsersCount = {this.props.totalUsersCount}
-                      pageSize = {this.props.pageSize}
-                      currentPage = {this.props.currentPage}
-                      onPageChanged = {this.onPageChanged}
-                      follow = {this.props.follow}
-                      unfollow = {this.props.unfollow}
-        />
+            <Users users={this.props.users}
+                   totalUsersCount={this.props.totalUsersCount}
+                   pageSize={this.props.pageSize}
+                   currentPage={this.props.currentPage}
+                   onPageChanged={this.onPageChanged}
+                   follow={this.props.follow}
+                   unfollow={this.props.unfollow}
+            />
         </>
     }
 }
@@ -59,5 +60,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersContainer);
+    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching
+})(UsersContainer);
 
