@@ -3,13 +3,15 @@ import postReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-page-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer from "./users-page-reducer";
+import authReducer from "./auth-reducer";
 
 let reducers = combineReducers({
 
     profilePage: postReducer,
     dialogsPage: dialogsReducer,
     sidebars: sidebarReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    auth: authReducer
 
 });
 
