@@ -1,26 +1,32 @@
 import React from 'react';
-import s from './Header.module.css';
 import Header from "./Header";
 import axios from "axios";
 import {connect} from "react-redux";
-import {setAuthDataUser} from "../redux/auth-reducer";
+import {setAuthDataUser, setProfileUserPhoto} from "../redux/auth-reducer";
+import {withRouter} from "react-router-dom";
 
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
+
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`,
             {withCredentials: true})
             .then(response => {
                 if (response.data.resultCode === 0) {
                     let {id, email, login} = response.data.data;
                     this.props.setAuthDataUser(id, email, login);
-                    debugger
+                    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + id)
+                        .then(res => {
+                            debugger
+                            this.props.setProfileUserPhoto(res.data.photos);
+                        })
                 }
             })
     }
 
     render() {
-        return <Header {...this.props}/>
+        return <Header {...this.props}
+                       photos={this.props.photos}/>
 
     }
 }
@@ -28,8 +34,11 @@ class HeaderContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
-        login: state.auth.login
+        login: state.auth.login,
+        photos: state.auth.photos
     }
 }
 
-export default connect(mapStateToProps, {setAuthDataUser})(HeaderContainer);
+let UserIdDataUrl = withRouter(HeaderContainer);
+
+export default connect(mapStateToProps, {setAuthDataUser, setProfileUserPhoto})(UserIdDataUrl);
