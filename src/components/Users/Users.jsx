@@ -30,24 +30,9 @@ const Users = (props) => {
                         </NavLink>
                     </div>
                     <div>
-                        {u.followed ?
-                            <button onClick={() =>
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                                    {
-                                        withCredentials: true,
-                                        headers: {
-                                            "API-KEY": "f536faf9-83ce-4203-83de-763427f73e09"
-                                        }
-                                    })
-                                    .then(response => {
-                                        if (response.data.resultCode == 0) {
-                                            {
-                                                props.follow(u.id)
-                                            }
-                                        }
-                                    })
-                            }>follow</button> :
-                            <button onClick={() =>
+                        {u.followed
+                            ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleFollowingProgress(true, u.id);
                                 axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                                     {
                                         withCredentials: true,
@@ -56,28 +41,47 @@ const Users = (props) => {
                                         }
                                     })
                                     .then(response => {
-                                        if (response.data.resultCode == 0) {
+                                        if (response.data.resultCode === 0) {
                                             {
                                                 props.unfollow(u.id)
                                             }
                                         }
+                                        props.toggleFollowingProgress(false, u.id);
                                     })
-                            }>unfollow</button>}
-                    </div>
-                </span>
-                <span>
-                    <span>
-                        <div>{u.name}</div>
-                        <div>{u.status}</div>
-                    </span>
-                    <span>
-                        <div>{'u.location.city'}</div>
-                        <div>{'u.location.country'}</div>
-                    </span>
-                </span>
-            </div>
-        )}
-    </div>
-}
+                            }}>unfollow</button>
+                                : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleFollowingProgress(true, u.id);
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
+                                    {
+                                        withCredentials: true,
+                                        headers: {
+                                            "API-KEY": "f536faf9-83ce-4203-83de-763427f73e09"
+                                        }
+                                    })
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            {
+                                                props.follow(u.id)
+                                            }
+                                            props.toggleFollowingProgress(false, u.id);
+                                        }
+                                    })
+                            }}>follow</button>}
+                            </div>
+                            </span>
+                            <span>
+                            <span>
+                            <div>{u.name}</div>
+                            <div>{u.status}</div>
+                            </span>
+                            <span>
+                            <div>{'u.location.city'}</div>
+                            <div>{'u.location.country'}</div>
+                            </span>
+                            </span>
+                            </div>
+                            )}
+                            </div>
+                        }
 
-export default Users;
+                        export default Users;
