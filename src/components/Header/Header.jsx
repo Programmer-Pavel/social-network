@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
-import photo from "../../assets/images/user.png";
 
 const Header = (props) => {
 
@@ -10,15 +9,6 @@ const Header = (props) => {
         <div className={s.loginBlock}>
             {props.isAuth ? props.login :
                 <NavLink to='/login' className={s.loginBlock}>login</NavLink>}
-                <div>
-                {/*    if ({props.photos.small === null}) {*/}
-                {/*    <img src={ photo}/>*/}
-                {/*} else {*/}
-                {/*    <img src={props.photos.small}/>*/}
-                {/*}*/}
-
-                    {/*<img src={props.photos.small}/>*/}
-                </div>
         </div>
     </header>
 }
