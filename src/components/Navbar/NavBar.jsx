@@ -7,29 +7,34 @@ const NavBar = (props) => {
 
     let sidebarElements = props.sidebars.sidebar.map(s => <Sidebar name={s.name} id={s.name} key={s.id} img={s.img}/>)
     return <nav className={s.nav}>
-        <div className={s.item}>
-            <NavLink to='/profile' activeClassName={s.activeLink}>Profile</NavLink>
-        </div>
-        <div className={s.item}>
-            <NavLink to='/dialogs' activeClassName={s.activeLink}>Messages</NavLink>
-        </div>
-        <div className={s.item}>
-            <NavLink to='/news' activeClassName={s.activeLink}>News</NavLink>
-        </div>
-        <div className={s.item}>
-            <NavLink to='/music' activeClassName={s.activeLink}>Music</NavLink>
-        </div>
-        <div className={s.item}>
-            <NavLink to='/settings' activeClassName={s.activeLink}>Settings</NavLink>
-        </div>
-        <div>
-            <div className={s.friends}>
-                Friends
+        <ul>
+            <div className={s.item}>
+                <li><NavLink to='/profile' activeClassName={s.activeLink} className={s.img_n}><div className={s.a}><span>Profile</span></div></NavLink></li>
+            </div>
+            <div className={s.item}>
+                <li><NavLink to='/dialogs' activeClassName={s.activeLink} className={s.img_n}><div className={s.a}><span>Messages</span></div></NavLink></li>
+            </div>
+            <div className={s.item}>
+                <li><NavLink to='/news' className={s.img_n}><div className={s.a}><span>News</span></div></NavLink></li>
+            </div>
+            <div className={s.item}>
+                <li><NavLink to='/music' className={s.img_n}><div className={s.a}><span>Music</span></div></NavLink></li>
+            </div>
+            <div className={s.item}>
+                <li><NavLink to='/settings' className={s.img_n}><div className={s.a}><span>Settings</span></div></NavLink></li>
+            </div>
+            <div className={s.item}>
+                <li><NavLink to='/users' className={s.img_n}><div className={s.a}><span>Users</span></div></NavLink></li>
             </div>
             <div>
-                {sidebarElements}
+                <div className={s.friends}>
+                    Friends
+                </div>
+                <div>
+                    {sidebarElements}
+                </div>
             </div>
-        </div>
+        </ul>
     </nav>
 }
 

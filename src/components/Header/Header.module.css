@@ -1,13 +1,49 @@
 .header {
-  grid-area: h;
-  background-color: #00807c;
+    grid-area: h;
+    margin: 0;
+    background-color: #fff;
+    min-height: 80px;
+    width: 100%;
+    box-shadow: 0 1px 3px 0 #888;
+    position: fixed;
+    z-index: 10;
+    display: inline-flex;
 }
 
 .header img {
-  width: 50px;
+    width: 50px;
 }
 
 .loginBlock {
-  float: right;
+    float: right;
+    font-family: 'Merriweather', serif;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #FCF2E5;
+    background: #90806A;
+    font-size: 1.5em;
+    font-weight: normal;
+    padding: 10px 40px;
+    display: inline-block;
+    margin: 0;
+    line-height: 1;
 }
+
+.nameOfSite {
+  font-family: "Roboto", sans-serif, Helvetica, Arial;
+  position: relative;
+  color: deepskyblue;
+  display: inline-block;
+  font-size: 3em;
+  font-weight: bold;
+  padding: 0px 0px;
+  margin: 0;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+}
+
 
