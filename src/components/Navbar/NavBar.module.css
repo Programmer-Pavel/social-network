@@ -11,10 +11,6 @@
     font-size: 30px;
 }
 
-.item .activeLink {
-    color: gold;
-}
-
 .nav ul {
     display: block;
     width: 100%;

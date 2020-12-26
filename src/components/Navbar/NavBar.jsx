@@ -9,10 +9,10 @@ const NavBar = (props) => {
     return <nav className={s.nav}>
         <ul>
             <div className={s.item}>
-                <li><NavLink to='/profile' activeClassName={s.activeLink} className={s.img_n}><div className={s.a}><span>Profile</span></div></NavLink></li>
+                <li><NavLink to='/profile' className={s.img_n}><div className={s.a}><span>Profile</span></div></NavLink></li>
             </div>
             <div className={s.item}>
-                <li><NavLink to='/dialogs' activeClassName={s.activeLink} className={s.img_n}><div className={s.a}><span>Messages</span></div></NavLink></li>
+                <li><NavLink to='/dialogs' className={s.img_n}><div className={s.a}><span>Messages</span></div></NavLink></li>
             </div>
             <div className={s.item}>
                 <li><NavLink to='/news' className={s.img_n}><div className={s.a}><span>News</span></div></NavLink></li>
