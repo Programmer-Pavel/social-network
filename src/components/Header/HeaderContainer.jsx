@@ -6,13 +6,8 @@ import {withRouter} from "react-router-dom";
 
 class HeaderContainer extends React.Component {
 
-    componentDidMount() {
-        this.props.authMyAccount()
-    }
-
     render() {
         return <Header {...this.props}/>
-
     }
 }
 
@@ -25,4 +20,4 @@ const mapStateToProps = (state) => {
 
 let UserIdDataUrl = withRouter(HeaderContainer);
 
-export default connect(mapStateToProps, {authMyAccount, logout})(UserIdDataUrl);
+export default connect(mapStateToProps, {logout})(UserIdDataUrl);
