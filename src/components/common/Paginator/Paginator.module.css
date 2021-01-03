@@ -1,14 +1,18 @@
-.selectedPage {
-    font-weight: bold;
-    font-size: 19px;
+.paginator {
+    margin: 15px 10px;
+    display: flex;
+    list-style: none;
+    outline: none;
+}
+.pageNumber {
+    border: 1px solid #47ccde ;
+    padding: 4px 8px;
+    outline: none;
     cursor: pointer;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50% 50%;
 }
 
-.selectNumber {
-    cursor: pointer;
-    padding: 10px;
-    margin: 5px;
+.pageNumber.selectedPage {
+    background-color: #47ccde ;
+    border-color: #47ccde ;
+    color: #fff;
 }
