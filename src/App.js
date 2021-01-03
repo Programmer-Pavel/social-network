@@ -7,12 +7,15 @@ import Music from "./components/Music/Music";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import NavBarContainer from "./components/Navbar/NavBarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/login";
 import {connect} from "react-redux";
 import Preloader from "./components/common/Preloader/preloader";
 import {initializeApp} from "./components/redux/app-reducer";
+import {withSuspense} from "./HOC/withSuspense";
+
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+
 
 class App extends React.Component {
     componentDidMount() {
@@ -29,7 +32,7 @@ class App extends React.Component {
                 <NavBarContainer/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs' render={() => <DialogsContainer store={this.props.store}/>}/>
-                    <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
+                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/Settings' component={Settings}/>
