@@ -6,6 +6,7 @@ import React from "react";
 import App from "./App";
 import store from "./components/redux/redux-store";
 import {Provider} from "react-redux";
+import 'antd/dist/antd.css';
 
     ReactDOM.render(
         <BrowserRouter>
@@ -15,6 +16,7 @@ import {Provider} from "react-redux";
                 </React.StrictMode>
             </Provider>
         </BrowserRouter>,
+
         document.getElementById('root')
     );
 

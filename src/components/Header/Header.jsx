@@ -1,6 +1,9 @@
 import React from 'react';
 import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
+import Avatar from "antd/lib/avatar/avatar";
+import { UserOutlined } from '@ant-design/icons';
+import {Button} from "antd";
 
 const Header = (props) => {
 
@@ -14,8 +17,13 @@ const Header = (props) => {
             </div>
             <div className={s.loginBlock}>
                 {props.isAuth
-                    ? <div>{props.login} - <button onClick={props.logout}>logout</button></div>
-                    :<NavLink to='/login' className={s.loginBlock}>login</NavLink>}
+                    ? <div><Avatar
+                        style={{
+                            backgroundColor: '#87d068',
+                        }}
+                        icon={<UserOutlined />}
+                    /> <Button type="primary" onClick={props.logout}>logout</Button></div>
+                    :<NavLink to='/login' className={s.loginBlock}><Button type="primary">login</Button></NavLink>}
             </div>
         </div>
     </header>
