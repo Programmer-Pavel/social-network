@@ -48,7 +48,7 @@ export const profileAPI = {
 export const instance = axios.create({
     withCredentials: true,
     headers: {
-        "API-KEY": "73c3d305-c997-41c1-b821-ddbc7770f535"
+        "API-KEY": "b2663fb0-1b32-4c36-bbfb-bb42e92e4526"
     },
     baseURL: "https://social-network.samuraijs.com/api/1.0/"
 })

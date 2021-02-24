@@ -14,6 +14,7 @@ import {initializeApp} from "./components/redux/app-reducer";
 import {withSuspense} from "./HOC/withSuspense";
 import MusicContainer from "./components/Music/MusicContainer";
 import 'antd/dist/antd.css';
+import {Main} from "./components/Navbar/NavBar";
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
@@ -29,16 +30,10 @@ class App extends React.Component {
         }
         return (
             <div className='app-wrapper'>
-                <HeaderContainer/>
-                <NavBarContainer/>
+                {/*<HeaderContainer/>*/}
+                {/*<NavBarContainer/>*/}
                 <div className='app-wrapper-content'>
-                    <Route path='/dialogs' render={() => <DialogsContainer store={this.props.store}/>}/>
-                    <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' render={() => <MusicContainer/>}/>
-                    <Route path='/Settings' component={Settings}/>
-                    <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/login' render={() => <Login/>}/>
+                    <Main/>
                 </div>
             </div>
         )
