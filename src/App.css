@@ -1,11 +1,11 @@
 /*.app-wrapper {*/
 /*    display: grid;*/
-/*    margin: 0 auto;*/
 
 /*    grid-template-areas:*/
 /*        'h h'*/
-/*        'n c';*/
-/*    grid-template-rows: 60px 1fr;*/
+/*        'n c'*/
+/*        'k k';*/
+/*    grid-template-rows: 60px 100%;*/
 /*    grid-template-columns: 2fr 10fr;*/
 /*    grid-gap: 0;*/
 /*}*/
@@ -13,7 +13,6 @@
 /*.app-wrapper-content {*/
 /*    grid-area: c;*/
 /*    background-color: #e0e3e5;*/
-/*    margin-top: 20px;*/
 /*}*/
 
 

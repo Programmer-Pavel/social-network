@@ -8,17 +8,15 @@ import store from "./components/redux/redux-store";
 import {Provider} from "react-redux";
 import 'antd/dist/antd.css';
 
-    ReactDOM.render(
+ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-                <React.StrictMode>
-                    <App />
-                </React.StrictMode>
+                <App/>
             </Provider>
         </BrowserRouter>,
 
-        document.getElementById('root')
-    );
+    document.getElementById('root')
+);
 
 
 // If you want your app to work offline and load faster, you can change

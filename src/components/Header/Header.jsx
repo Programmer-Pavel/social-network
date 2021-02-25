@@ -15,10 +15,19 @@ import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../redux/auth-reducer";
 import clsx from "clsx";
+import s from "./Header.module.css"
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import SendIcon from "@material-ui/icons/Send";
+import ListItemText from "@material-ui/core/ListItemText";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -47,68 +56,62 @@ export default function Header({handleDrawerOpen}) {
     };
 
     const handleClose = () => {
-        dispatch(logout())
+        setAnchorEl(null);
     };
+
+    const logOutClick = () => {
+        dispatch(logout())
+    }
 
 
     return (
-        <div className={classes.root}>
+        <div className={s.header}>
+            <div className={classes.root}>
+                    <Toolbar>
+                        <Typography variant="h6" className={classes.title}>
+                            Social Network
+                        </Typography>
 
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, {
-                        [classes.hide]: open,
-                    })}
-                        >
-                    <MenuIcon />
-                </IconButton>
-            <Typography variant="h6" noWrap>
-                Mini variant drawer
-            </Typography>
+                        {isAuthUser
+                            ?
+                            <div>
+                                <IconButton
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleMenu}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={open}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItem onClick={logOutClick}>log out</MenuItem>
+                                </Menu>
+                            </div>
 
-                    {isAuthUser
-                        ?
-                        <div>
-                            <IconButton
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleMenu}
-                                color="inherit"
-                            >
-                                <AccountCircle/>
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={open}
-                                onClose={handleClose}
-                            >
-                                <MenuItem>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>Log out</MenuItem>
-                            </Menu>
-                        </div>
+                            :
+                            <NavLink className={classes.loginBtn} to="/login">
+                                <Button variant="contained" color="primary">Log in</Button>
+                            </NavLink>
 
-                        :
-                        <NavLink className={classes.loginBtn} to="/login">
-                            <Button variant="contained" color="primary">Log in</Button>
-                        </NavLink>
+                        }
+                    </Toolbar>
 
-                    }
-                </Toolbar>
+            </div>
         </div>
     );
 }
